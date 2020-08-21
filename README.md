@@ -52,5 +52,6 @@ All of the hyperparameters are included here.
 To get started with the notebooks, open the terminal in the main folder of the project and run the following commands:
 1. ```pip install poetry```
 2. ```poetry config virtualenvs.in-project true```
-3. ```poetry run``` to start jupyter lab in the virtual env
+3. ```poetry install``` to install/update dependencies
+4. ```poetry run``` to start jupyter lab in the virtual env
 * Run `poetry add [package]` to add a python package.
