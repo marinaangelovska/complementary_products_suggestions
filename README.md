@@ -3,15 +3,15 @@
 ## Overview of the pipeline and experiments
 
 ### Introduction
-This is the code for the experiments used in a master theis research. In this part we will briefly explain the structure of the notebooks and python files implemented, and a description of the overall process. The following figure explains the process during the thesis work, starting from the Data Retreival and ending with different Comparative Analysis.
+This is the code for the experiments used in a master thesis research. In this part we will briefly explain the structure of the notebooks and python files implemented, and a description of the overall process. The following figure explains the process during the thesis work, starting from the Data Retrieval and ending with different Comparative Analysis.
 
 <img src="https://github.com/marinaangelovska/complementary_products_suggestions/blob/master/report_structure.png" width="700">
 
-Each of these steps is separated in different notebooks, where some of the repetitive functions are split in a few different .py files. We do not include everything which was doned during this thesi in these files, but only the most important and relevat experiments and models are included. 
+Each of these steps is separated in different notebooks, where some of the repetitive functions are split in a few different .py files. We do not include everything which was done during this thesis in these files, but only the most important and relevant experiments and models are included. 
 
 ## Notebooks description:
 
-### 1. Data retreival and preprocessing & 2. Data Analysis
+### 1. Data retrieval and preprocessing & 2. Data Analysis
 The first two original notebooks were removed because of data confidentiality. Instead, we use two fake datasets (named \"dataset\" and \"content\") with a few samples just so that we can explain what kind of data is needed for running the models. The \"dataset\" consists of pairs of matches of products with their identifiers, titles and the label indicating if the second product is an add-on to the first product or not. The \"content\" dataset contains all products with all of their attributes (in this dummy data, only the title).
 
 ### 3. CNN vs. LSTM &rarr; 03-CNN_vs._LSTM.ipnyb
@@ -27,14 +27,14 @@ From this point, we only use the Siamese LSTM approach with Intermediate Merge a
 In this part we implement and test the baselines on the same data we used on the Siamese LSTM before. Random Forest, Vanilla Neural Network and Single (not Siamese) LSTM are implemented. We report their performances using the same metrics.
 
 ### 6. Using the Siamese LSTM weights for transforming the solution to KNN (cosine similarity) problem &rarr; 06-LSTM_to_KNN.ipnyb
-We are creating a list of target and candidate products and we want to run all possible pairs in the model so that for each target product we get K add-ons product. In real-life scenarios we would get millions of product pairs, thus we need to find a solution which will handle these data points in the most efficient way. Therefore, in this notebook we train Siamese LSTM on the training set and then we save the weights/embeddings for each product for the target and candidate products sets. After doing this, we already have the vector representations for each product. We then calculcate the cosine similarity between all possible pairs of products from the two sets and we finally get their similarity/complementarity score. The difference with running all of these product pairs through the neural network is that we would have iterated through it for each pair, but with the approach propose we only iterate once for each product, as explained in the following picture.
+We are creating a list of target and candidate products and we want to run all possible pairs in the model so that for each target product we get K add-ons product. In real-life scenarios we would get millions of product pairs, thus we need to find a solution which will handle these data points in the most efficient way. Therefore, in this notebook we train Siamese LSTM on the training set and then we save the weights/embeddings for each product for the target and candidate products sets. After doing this, we already have the vector representations for each product. We then calculate the cosine similarity between all possible pairs of products from the two sets and we finally get their similarity/complementarity score. The difference with running all of these product pairs through the neural network is that we would have iterated through it for each pair, but with the approach propose we only iterate once for each product, as explained in the following picture.
 
 <img src="https://github.com/marinaangelovska/complementary_products_suggestions/blob/master/snn_scalable.png" width="300">
 
 ## Python files description:
 
-### 1. Data Retriveal
-This files containts queries for getting the data from BigQuery, but for the reasons named before, we do not include this file in this repo.
+### 1. Data Retrieval
+This files contains queries for getting the data from BigQuery, but for the reasons named before, we do not include this file in this repo.
 
 ### 2. Data Preprocessing &rarr; data_preprocessing.py
 This file consisits helper functions for generating the negative samples, merging two dataframes and cleaning the data.
